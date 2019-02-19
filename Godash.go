@@ -23,3 +23,15 @@ func IsFalsy(input interface{}) bool {
 	}
 	return reflect.DeepEqual(input, reflect.Zero(reflect.TypeOf(input)).Interface())
 }
+
+// Compact just takes the input array and returns the array without falsy value
+func Compact(input []interface{}) []interface{} {
+	lengthOfArray := len(input)
+	var chunks []interface{}
+	for i := 0; i < lengthOfArray; i++ {
+		if IsFalsy(input[i]) {
+			chunks = append(chunks, input[i])
+		}
+	}
+	return chunks
+}
