@@ -18,5 +18,8 @@ func Chunk(input []interface{}, chunkLength int) [][]interface{} {
 
 // IsFalsy just takes the input and return a boolean if the value is Falsy
 func IsFalsy(input interface{}) bool {
+	if input == nil {
+		return true
+	}
 	return reflect.DeepEqual(input, reflect.Zero(reflect.TypeOf(input)).Interface())
 }
